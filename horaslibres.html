@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>horas libres</title>
+    <link rel="stylesheet" href="principal.css">
+    <link rel="icon"  href="logo1.png" type = image/png>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, #A407B0,#A407B0);
+    position: relative;
+    overflow-x: hidden;
+}
+
+        .main-content {
+    margin-top: 90px; /* deja espacio para el navbar */
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Bloque blanco centrado */
+.definicion {
+    background-color: white;
+    color: black;
+    padding: 30px;
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centra el texto */
+}
+
+.definicion ul {
+      display: block; /* Cambia de flex a block para comportamiento estándar */
+    list-style-type: disc; /* Viñetas normales */
+    text-align: left;       /* Alinea texto a la izquierda */
+    padding-left: 40px;     /* Ajusta el espacio para las viñetas */
+    margin: 20px auto;
+    }
+
+.definicion:hover {
+    box-shadow: 0 0 25px 10px rgba(164, 7, 176, 0.6); /* Más brillo y color */
+    transform: scale(1.02);
+}
+.texto-gradiente {
+    font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(to right, #A407B0, #FEA501);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo" class="logo">
+        </div>
+        <div class="nav-links" >
+            <a href="perfil.html" target="_blank">Pefil</a>
+            <a href="principal.html" target="_blank">Principal</a>
+            <a href="horaslibres.html"target="_blank">Horas Libres</a>
+            <a href="horario.html"target="_blank">Horario</a>
+            <a href="grafica1.html"target="_blank">Estadística</a>
+            <a href="Historia.html"target="_blank">Historia</a>
+            <a href="reserva.html"target="_blank">Reserva</a>
+            <a href="Campus.html"target="_blank">Campus</a>
+            <a href="convenios.html"target="_blank">Convenios</a>
+            <a href="https://latienda.unab.edu.co/"target="_blank">Tienda</a>
+            <a href="logros.html"target="_blank">logros</a>
+            <a href="nosotros.html"target="_blank">Nosotros</a>
+        </div>
+    </div>
+
+    <!-- titulo horas libres -->
+    <div class="main-content">
+        <h1>Horas Libres</h1>
+    </div>
+    <div class = "definicion">
+        <h2>¿Qué son las Horas Libres?</h2>
+        <p>En la Universidad Autónoma de Bucaramanga (UNAB), las horas libres son un requisito obligatorio para todos los estudiantes de pregrado presencial. Según la Resolución N.° 300 del 20 de junio de 2006, cada estudiante debe completar un mínimo de 96 horas participando en actividades de tipo social, artístico, cultural, deportivo o de salud integral que contribuyan a su formación personal y profesional.</p>
+        </div>
+        <div class = "definicion">
+        <h2>¿Donde las puedo hacer?</h2>
+        <p>Existen varios momentos y lugares donde puedes obtener horas libres. Principalmente puedes hacerlas en:</p>
+        <ul class = "lista_centrada">
+        <li>Actividades en UNAB Fest</li>
+        <li>Perteneciendo a la logística de ULibro</li>
+        <li>Actividades por días especiales por Bienestar Universitario</li>
+        <li>Ir al gym del CSU</li>
+        </ul>
+        </div>   
+        
+        <div class = "definicion" >
+            <h2>¿Cuantas Horas Libres Llevas?</h2>
+            <h3 class="texto-gradiente">17 / 96</h3>
+        </div>
+
+</body>
+</html>

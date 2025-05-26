@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservación de implementos</title>
+  <link rel="stylesheet" href="principal.css">
+  <link rel="icon"  href="logo1.png" type = image/png>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <style>
+      body {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: black;
+  background-image: url('fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(254, 165, 1, 0.3); 
+  z-index: -1;
+}
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: black;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 10%;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      position: relative;
+    }
+
+    .icon-button {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: none;
+      background-color: #FEA501;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .icon-button:hover {
+      background-color: #e29400;
+    }
+
+    .hover-panel {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 270px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  display: none;
+  z-index: 1;
+  color: #000;
+}
+
+    .item:hover .hover-panel {
+      display: block;
+    }
+
+    .hover-panel h3 {
+      margin-top: 0;
+      color: white;
+      background-color: #A407B0;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .option-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    .option-box {
+      background-color: #ddd;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .option-box:hover {
+      background-color: #A407B0;
+      box-shadow: 0 0 15px 5px rgba(164, 7, 176, 0.6);
+      color: white;
+    }
+
+    .option-box.active {
+      background-color: #A407B0;
+      color: white;
+      box-shadow: 0 0 15px 5px rgba(164, 7, 176, 0.6);
+    }
+
+    .date-input, .text-input {
+      margin-top: 10px;
+      width: 100%;
+      padding: 5px;
+    }
+
+    .mini-submit-button {
+      margin-top: 15px;
+      background-color: #FEA501;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .mini-submit-button:hover {
+      background-color: #e29400;
+    }
+
+    .main-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 40px auto 20px auto; /* Menos espacio abajo */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-box:hover {
+  box-shadow: 0 0 25px 10px rgba(164, 7, 176, 0.3);
+}
+
+.retenciones-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto; /* Pegado al de arriba, espacio solo abajo */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.retenciones-box:hover {
+  box-shadow: 0 0 25px 10px rgba(164, 7, 176, 0.3);
+}
+
+.retenciones-box h2 {
+  color: #A407B0;
+  margin-bottom: 20px;
+}
+
+.multa-tabla {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.multa-fila {
+  display: table-row;
+}
+
+.multa-celda {
+  display: table-cell;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+  </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo" class="logo">
+        </div>
+        <div class="nav-links" >
+            <a href="perfil.html" target="_blank">Pefil</a>
+            <a href="principal.html" target="_blank">Principal</a>
+            <a href="horaslibres.html"target="_blank">Horas Libres</a>
+            <a href="horario.html"target="_blank">Horario</a>
+            <a href="grafica1.html"target="_blank">Estadística</a>
+            <a href="Historia.html"target="_blank">Historia</a>
+            <a href="reserva.html"target="_blank">Reserva</a>
+            <a href="Campus.html"target="_blank">Campus</a>
+            <a href="convenios.html"target="_blank">Convenios</a>
+            <a href="https://latienda.unab.edu.co/"target="_blank">Tienda</a>
+            <a href="logros.html"target="_blank">logros</a>
+            <a href="nosotros.html"target="_blank">Nosotros</a>
+        </div>
+    </div>
+    <div class="main-box">
+  <h1>Reservación de Implementos Institucionales UNAB</h1>
+  <div class="container">
+    <!-- Deportivo -->
+    <div class="item">
+      <button class="icon-button" title="Deportivo">
+        <img src="icono1.png" alt="Deportivo" class="icon-img" height="60%" width="60%">
+      </button>
+      <div class="hover-panel">
+        <h3>Deportivo</h3>
+        <div class="option-boxes" data-group="Deportivo">
+          <div class="option-box">Sala Squash 1</div>
+          <div class="option-box">Sala Squash 2</div>
+          <div class="option-box">Gimnasio</div>
+          <div class="option-box">Cancha tenis</div>
+          <div class="option-box">Cancha basket</div>
+          <div class="option-box">Cancha volleyball</div>
+        </div>
+        <input type="date" class="date-input">
+        <button class="mini-submit-button">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Artístico -->
+    <div class="item">
+      <button class="icon-button" title="Artístico"><img src="icono2.png" alt="Deportivo" class="icon-img" height="60%" width="60%"></button>
+      <div class="hover-panel">
+        <h3>Artístico</h3>
+        <div class="option-boxes" data-group="Artístico">
+          <div class="option-box">Sala de grabación 1</div>
+          <div class="option-box">Sala de grabación 2</div>
+          <div class="option-box">Sala Sonora</div>
+        </div>
+        <input type="date" class="date-input">
+        <button class="mini-submit-button">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Sala de Estudio -->
+    <div class="item">
+      <button class="icon-button" title="Sala de estudio"><img src="icono3.png" alt="Deportivo" class="icon-img" height="60%" width="60%"></button>
+      <div class="hover-panel">
+        <h3>Sala de Estudio</h3>
+        <div class="option-boxes" data-group="Sala de Estudio">
+          <div class="option-box">Sala de estudio 1 (biblioteca)</div>
+          <div class="option-box">Sala de estudio 2 (biblioteca)</div>
+          <div class="option-box">Sala de estudio 3 (biblioteca)</div>
+        </div>
+        <input type="date" class="date-input">
+        <button class="mini-submit-button">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Material Bibliográfico -->
+    <div class="item">
+      <button class="icon-button" title="Material bibliográfico"><img src="icono4.png" alt="Deportivo" class="icon-img" height="60%" width="60%"></button>
+      <div class="hover-panel">
+        <h3>Material Bibliográfico</h3>
+        <div class="option-boxes" data-group="Material Bibliográfico">
+          <div class="option-box">Préstamo de Libro</div>
+          
+        </div>
+        <input type="text" class="text-input" placeholder="Título del libro">
+        <input type="text" class="text-input" placeholder="Autor del libro">
+        <input type="date" class="date-input" placeholder="Fecha devolución">
+        <button class="mini-submit-button">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="retenciones-box">
+  <h2>Retenciones / multas</h2>
+  <div id="multas-contenido"></div>
+</div>
+
+  <script>
+    
+  // Activar una sola opción por grupo
+  document.querySelectorAll('.option-boxes').forEach(group => {
+    const boxes = group.querySelectorAll('.option-box');
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        boxes.forEach(b => b.classList.remove('active'));
+        box.classList.add('active');
+      });
+    });
+  });
+  // Mostrar/Ocultar panel al hacer clic en el icono
+  document.querySelectorAll('.icon-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevenir que se cierre inmediatamente por el listener global
+
+      const item = button.closest('.item');
+      const panel = item.querySelector('.hover-panel');
+
+      // Cerrar todos los demás paneles
+      document.querySelectorAll('.hover-panel').forEach(p => {
+        if (p !== panel) p.style.display = 'none';
+      });
+
+      // Alternar visibilidad del panel actual
+      panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+    });
+  });
+
+  // Cerrar paneles si haces clic fuera
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.hover-panel').forEach(panel => {
+      panel.style.display = 'none';
+    });
+  });
+
+  // Detener propagación cuando se hace clic dentro del panel para no cerrarlo
+  document.querySelectorAll('.hover-panel').forEach(panel => {
+    panel.addEventListener('click', (e) => e.stopPropagation());
+  });
+
+  // Lógica individual para cada mini botón de envío
+  document.querySelectorAll('.mini-submit-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const panel = button.closest('.hover-panel');
+      const title = panel.querySelector('h3').textContent;
+      const selected = panel.querySelector('.option-box.active');
+      const dateInputs = panel.querySelectorAll('input[type="date"]');
+      const date = dateInputs[0]?.value;
+
+      let message = `${title}:\n`;
+
+      if (selected) {
+        message += `• Opción: ${selected.textContent}\n`;
+      } else {
+        message += `• Opción: [No seleccionada]\n`;
+      }
+
+      if (title === "Material Bibliográfico") {
+        const titulo = panel.querySelector('input[placeholder="Título del libro"]').value;
+        const autor = panel.querySelector('input[placeholder="Autor del libro"]').value;
+        const devolucion = dateInputs[0]?.value;
+
+        message += `• Título del libro: ${titulo || "[No ingresado]"}\n`;
+        message += `• Autor del libro: ${autor || "[No ingresado]"}\n`;
+        message += `• Fecha devolución: ${devolucion || "[No ingresada]"}\n`;
+      } else {
+        message += `• Fecha: ${date || "[No seleccionada]"}\n`;
+      }
+
+      alert(message);
+    });
+  });
+
+  // Datos simulados de multas o retenciones
+const multas = [
+  { nombre: "Devolución tardía de Casillero", fecha: "2025-05-10", precio: "$7.000" },
+  { nombre: "Devolución tardía de Casillero", fecha: "2025-04-28", precio: "$7.000" }
+];
+
+// Función para mostrar las multas
+function mostrarMultas() {
+  const contenedor = document.getElementById('multas-contenido');
+
+  if (multas.length === 0) {
+    contenedor.innerHTML = `<p style="font-size: 18px;">Por ahora no tienes 😊</p>`;
+    return;
+  }
+
+  const tabla = document.createElement('div');
+  tabla.className = 'multa-tabla';
+
+  // Encabezado
+  const encabezado = document.createElement('div');
+  encabezado.className = 'multa-fila';
+  encabezado.innerHTML = `
+    <div class="multa-celda"><strong>Nombre</strong></div>
+    <div class="multa-celda"><strong>Fecha</strong></div>
+    <div class="multa-celda"><strong>Precio</strong></div>
+  `;
+  tabla.appendChild(encabezado);
+
+  // Filas de datos
+  multas.forEach(multa => {
+    const fila = document.createElement('div');
+    fila.className = 'multa-fila';
+    fila.innerHTML = `
+      <div class="multa-celda">${multa.nombre}</div>
+      <div class="multa-celda">${multa.fecha}</div>
+      <div class="multa-celda">${multa.precio}</div>
+    `;
+    tabla.appendChild(fila);
+  });
+
+  contenedor.appendChild(tabla);
+}
+
+// Ejecutar al cargar
+mostrarMultas();
+  </script>
+</body>
+</html>

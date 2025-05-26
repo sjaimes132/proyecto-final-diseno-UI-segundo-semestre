@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"  href="logo1.png" type = image/png>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+  background-image: url('fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+  font-family: 'Poppins', sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(254, 165, 1, 0.5), rgba(164, 7, 176, 0.5)); 
+  z-index: -1;}
+    </style>
+</head>
+<body>
+    
+    <!-- logo nortwest -->
+    <div class="logo-container">
+        <img src="logo1.png" alt="Logo" class="logo">
+    </div>
+
+    <!-- formulario para crar la cuenta -->
+    <div class="login-container">
+        <h1 class="main-title">Universidad Autónoma de Bucaramanga</h1>
+        <h2>Crea tu Cuenta</h2>
+        <input type="text" id="nombre_completo" placeholder="Nombre Completo (sin tildes)">
+        <input type="text" id="username_crear" placeholder="ID Unab">
+        <input type="text" id="correo" placeholder="Usuario Unab (primera parte del correo Unab)">
+        <input type="text" id="password_crear" placeholder="Contraseña">
+        
+        <!-- crear cuenta -->
+        <button onclick="crear()">Crear Cuenta </button>
+
+        <!--  de error -->
+        <p id="error-message"></p>
+    </div>
+
+    <script src="crearcuenta.js"></script>
+</body>
+</html>
